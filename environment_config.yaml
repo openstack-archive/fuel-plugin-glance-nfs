@@ -1,0 +1,14 @@
+attributes:
+  nfs_volume_for_glance:
+    value: ""
+    label: "NFS Volume"
+    description: "NFS volume to store images (e.g. 192.168.0.2:/vol1)"
+    weight: 10
+    type: "text"
+  nfs_mount_point_glance:
+    value: "/mnt/glance"
+    label: "NFS mount point"
+    description: "Mount point to store images (Glance)"
+    weight: 20
+    type: "text"
+
