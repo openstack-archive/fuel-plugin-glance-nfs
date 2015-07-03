@@ -1,0 +1,8 @@
+Verified+2: Jenkins
+Code-Review+2: Samuel BARTEL <samuel.bartel@orange.com>
+Workflow+1: Samuel BARTEL <samuel.bartel@orange.com>
+Submitted-by: Jenkins
+Submitted-at: Fri, 03 Jul 2015 08:44:59 +0000
+Reviewed-on: https://review.openstack.org/198261
+Project: stackforge/fuel-plugin-glance-nfs
+Branch: refs/heads/master
