@@ -1,6 +1,7 @@
 # This task is required for controller nodes
-- role: ['controller']
-  stage: post_deployment
+- role: ['primary-controller', 'controller']
+  stage: post_deployment/700
+  required_for: [upload_cirros]
   type: puppet
   parameters:
     puppet_manifest: puppet/site.pp

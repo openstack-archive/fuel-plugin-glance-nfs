@@ -16,7 +16,7 @@ Requirements
 
 | Requirement                      | Version/Comment                                         |
 |----------------------------------|---------------------------------------------------------|
-| Mirantis Openstack compatibility | 6.0                                                     |
+| Mirantis Openstack compatibility | 6.1                                                    |
 | NFS Server                       | an NFS server with volume accessible from compute nodes |
 
 Recommendations
@@ -48,18 +48,21 @@ Glance-nfs plugin installation
 
    ``fpb --build fuel-plugin-glance-nfs/``
 
-4. The glance_nfs-<x.x.x>.fp file will be created in the plugin folder (fuel-plugin-glance-nfs)
+4. The glance_nfs-<x.x.x>.rpm file will be created in the plugin folder (fuel-plugin-glance-nfs)
 
 5. Move this file to the Fuel Master node with secure copy (scp):
 
-   ``scp glance_nfs-<x.x.x>.fp root@:<the_Fuel_Master_node_IP address>:/tmp``
+   ``scp glance_nfs-<x.x.x>.rpm root@:<the_Fuel_Master_node_IP address>:/tmp``
    ``cd /tmp``
 
 6. Install the glance-nfs plugin:
 
-   ``fuel plugins --install glance_nfs-<x.x.x>.fp``
+   ``fuel plugins --install glance_nfs-<x.x.x>.rpm``
 
-6. Plugin is ready to use and can be enabled on the Settings tab of the Fuel web UI.
+7.  Verify that the plugin is installed correctly:
+   ``fuel plugins --list``
+   
+8. Plugin is ready to use and can be enabled on the Settings tab of the Fuel web UI.
 
 User Guide
 ==========
@@ -101,6 +104,10 @@ Release Notes
 **1.0.0**
 
 * Initial release of the plugin
+
+**2.0.0**
+
+* Update plugin to Fuel 6.1 release
 
 
 

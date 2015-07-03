@@ -3,7 +3,13 @@ $nfs_volume_for_glance,
 $nfs_mount_point_glance,
 ){
   include glance_nfs::params
-
+  
+  # have to find a better way to do this, if we can execute plugin before upload_cirros task we don't need this anymore 
+  exec{ "image-delete":
+  command		=> "/bin/bash -c 'source /root/openrc && /usr/bin/glance image-delete TestVM | exit 0'",
+  before 		=> Package["$glance_nfs::params::package_name"],
+  }
+  
   # Install package and start services
   package { $glance_nfs::params::package_name:
     ensure => present,
@@ -36,7 +42,7 @@ $nfs_mount_point_glance,
   # Create Mount Point
   exec{ "/bin/mkdir -p $nfs_mount_point_glance":
 	unless => "/usr/bin/test -d $nfs_mount_point_glance",
-	before => mount["$nfs_mount_point_glance"],
+	before => Mount["$nfs_mount_point_glance"],
   }
   
   
@@ -67,6 +73,10 @@ $nfs_mount_point_glance,
   exec{ "/bin/chmod 775 ${$nfs_mount_point_glance}/images":
   require => Exec["/bin/mkdir -p ${$nfs_mount_point_glance}/images"],
   notify => Service["$::glance_nfs::params::service_name"],
+  }
+
+  exec{ "/usr/bin/ruby /etc/puppet/modules/osnailyfacter/modular/astute/upload_cirros.rb":
+  require => Exec["/bin/chmod 775 ${$nfs_mount_point_glance}/images"],
   }
 
 }
