@@ -61,7 +61,7 @@ Glance-nfs plugin installation
 
 7.  Verify that the plugin is installed correctly:
    ``fuel plugins --list``
-   
+
 8. Plugin is ready to use and can be enabled on the Settings tab of the Fuel web UI.
 
 User Guide
@@ -113,4 +113,7 @@ Release Notes
 
 * Update plugin to Fuel 7.0 release
 
+**3.0.1**
+
+* Update to solve problem with TestVM image on multi controller deployment
 

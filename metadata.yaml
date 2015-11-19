@@ -2,7 +2,7 @@
 name: glance_nfs
 title: Glance NFS plugin
 # Plugin version
-version: 3.0.0
+version: 3.0.1
 # Description
 description: Enables Glance to use NFS volume as storage backend for images
 # Required fuel version
