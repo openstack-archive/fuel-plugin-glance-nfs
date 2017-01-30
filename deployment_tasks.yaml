@@ -1,0 +1,25 @@
+- id: glance_backend_nfs
+  type: puppet
+  version: 2.1.0
+  groups: [primary-controller, controller]
+  required_for: [glance]
+  requires: [globals]
+  condition:
+    yaql_exp: >
+      changedAny($.deployment_id, $.master_ip, $.glance_nfs,
+      $.glance, $.storage)
+  parameters:
+    puppet_manifest: puppet/manifests/glance_nfs_backend.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 180
+
+- id: install_nfs
+  type: puppet
+  version: 2.1.0
+  groups: [primary-controller, controller]
+  required_for: [primary-openstack-controller, openstack-controller]
+  requires: [glance]
+  parameters:
+    puppet_manifest: puppet/manifests/install_nfs.pp
+    puppet_modules: puppet/modules:/etc/puppet/modules
+    timeout: 180

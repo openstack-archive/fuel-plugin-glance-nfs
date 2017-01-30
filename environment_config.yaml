@@ -11,4 +11,10 @@ attributes:
     description: "Mount point to store images (Glance)"
     weight: 20
     type: "text"
+  nfs_mount_options:
+    value: "vers=4"
+    label: "NFS mount options"
+    description: "NFS mount options, comma delimited"
+    weight: 20
+    type: "text"
 
